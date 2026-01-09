@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+#tasklist::-webkit-scrollbar{
+  display: none;
+  scroll-behavior: smooth;
+}
+#all-tasks::-webkit-scrollbar{
+  display: none;
+  scroll-behavior: smooth;
+}   
+
+/* #admin-dashboard {
+  background-image: url("admin.jpg2.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+} */
+
+#login-container {
+  background-image: url("login.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#logo {
+  background-image: url("logo.jpg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
