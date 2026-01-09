@@ -1,14 +1,14 @@
-import React, { useContext, useState } from 'react';
-import { AuthContext } from '../Contexts/AuthProvider';
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../Contexts/AuthProvider";
 
 const CreateTask = () => {
   const [userData, setUserData] = useContext(AuthContext);
 
-  const [taskTitle, setTaskTitle] = useState('');
-  const [taskDescription, setTaskDescription] = useState('');
-  const [taskDate, setTaskDate] = useState('');
-  const [assignTo, setAssignTo] = useState('');
-  const [category, setCategory] = useState('');
+  const [taskTitle, setTaskTitle] = useState("");
+  const [taskDescription, setTaskDescription] = useState("");
+  const [taskDate, setTaskDate] = useState("");
+  const [assignTo, setAssignTo] = useState("");
+  const [category, setCategory] = useState("");
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -21,18 +21,18 @@ const CreateTask = () => {
       active: false,
       newTask: true,
       failed: false,
-      completed: false
+      completed: false,
     };
 
-    const updated = userData.map(emp => {
+    const updated = userData.map((emp) => {
       if (emp.firstName === assignTo) {
         return {
           ...emp,
           tasks: [...emp.tasks, newTask],
           taskCounts: {
             ...emp.taskCounts,
-            newTask: emp.taskCounts.newTask + 1
-          }
+            newTask: emp.taskCounts.newTask + 1,
+          },
         };
       }
       return emp;
@@ -41,11 +41,11 @@ const CreateTask = () => {
     setUserData(updated);
     localStorage.setItem("employees", JSON.stringify(updated));
 
-    setTaskTitle('');
-    setCategory('');
-    setAssignTo('');
-    setTaskDate('');
-    setTaskDescription('');
+    setTaskTitle("");
+    setCategory("");
+    setAssignTo("");
+    setTaskDate("");
+    setTaskDescription("");
   };
 
   return (
@@ -72,8 +72,8 @@ const CreateTask = () => {
             <input
               value={taskDate}
               onChange={(e) => setTaskDate(e.target.value)}
-              className="text-sm py-2 px-3 w-full rounded outline-none bg-transparent border border-gray-400 mb-4"
               type="date"
+              className="w-full max-w-full text-sm py-1.5 px-2 sm:py-2 sm:px-3 rounded outline-none bg-transparent border border-gray-400 mb-4 box-border"
             />
           </div>
 
@@ -109,9 +109,7 @@ const CreateTask = () => {
             className="w-full h-32 sm:h-40 lg:h-44 text-sm py-2 px-4 rounded outline-none bg-transparent border border-gray-400"
           ></textarea>
 
-          <button
-            className="bg-emerald-500 py-3 hover:bg-emerald-600 rounded text-sm mt-4 w-full transition-colors"
-          >
+          <button className="bg-emerald-500 py-3 hover:bg-emerald-600 rounded text-sm mt-4 w-full transition-colors">
             Create Task
           </button>
         </div>
