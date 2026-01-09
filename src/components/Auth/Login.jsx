@@ -17,12 +17,11 @@ function Login({ handleLogin }) {
     <div
       id="login-container"
       className="h-screen w-screen flex items-center justify-center bg-cover bg-center"
-      style={{ backgroundImage: "url('/assets/login.jpg')" }} 
+      style={{ backgroundImage: "url('/assets/login.jpg')" }}
     >
       <div className="w-11/12 max-w-md bg-white p-8 sm:p-10 rounded-2xl border border-gray-300 shadow-lg">
-        {/* Logo */}
         <div
-          style={{ backgroundImage: "url('/assets/logo.jpg')" }} 
+          style={{ backgroundImage: "url('/assets/logo.jpg')" }}
           className="h-16 w-16 mx-auto mb-6 bg-cover bg-center rounded-full"
         ></div>
 
