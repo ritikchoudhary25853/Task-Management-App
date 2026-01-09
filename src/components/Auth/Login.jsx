@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import loginBg from "../assets/login.jpg";
-import logoImg from "../assets/logo.jpg";
+
 
 function Login({ handleLogin }) {
   const [email, setEmail] = useState("");
