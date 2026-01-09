@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import loginBg from "../assets/login.jpg";  // remove public from path
-import logoImg from "../assets/logo.jpg";    // remove public from path
+import loginBg from "../assets/login.jpg";
+import logoImg from "../assets/logo.jpg";
 
 function Login({ handleLogin }) {
   const [email, setEmail] = useState("");
@@ -17,12 +17,12 @@ function Login({ handleLogin }) {
     <div
       id="login-container"
       className="h-screen w-screen flex items-center justify-center bg-cover bg-center"
-      style={{ backgroundImage: `url(${loginBg})` }} // use imported variable
+      style={{ backgroundImage: "url('/assets/login.jpg')" }} 
     >
       <div className="w-11/12 max-w-md bg-white p-8 sm:p-10 rounded-2xl border border-gray-300 shadow-lg">
         {/* Logo */}
         <div
-          style={{ backgroundImage: `url(${logoImg})` }} // use imported variable
+          style={{ backgroundImage: "url('/assets/logo.jpg')" }} 
           className="h-16 w-16 mx-auto mb-6 bg-cover bg-center rounded-full"
         ></div>
 
