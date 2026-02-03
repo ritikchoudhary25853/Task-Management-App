@@ -1,42 +1,39 @@
-import React from 'react';
+import React from "react";
+import { motion } from "framer-motion";
+import { taskCardMotion } from "../animations/Taskcard";
 
 const CompleteTask = ({ data }) => {
   return (
-    <div className="
-      w-full 
-      sm:w-80 
-      md:w-96 
-      h-auto 
-      p-4 
-      sm:p-6 
-      md:p-10 
-      bg-green-400 
-      shrink-0 
-      rounded-2xl
-    ">
-      <div className="flex justify-between items-center">
-        <h3 className="bg-red-500 text-white rounded-md px-2 py-1 text-xs sm:text-sm">
+    <motion.div
+      {...taskCardMotion}
+      className="
+        w-full sm:w-80 md:w-96
+        p-6 md:p-8
+        bg-gradient-to-br from-green-400 to-green-600
+        rounded-2xl
+        text-white
+        shadow-xl
+      "
+    >
+      <div className="flex justify-between items-center text-sm">
+        <span className="bg-emerald-700 px-3 py-1 rounded-md">
           {data.category}
-        </h3>
-        <h4 className="text-white text-xs sm:text-sm">
-          {data.date}
-        </h4>
+        </span>
+        <span>{data.date}</span>
       </div>
 
-      <h1 className="text-white mt-4 sm:mt-5 text-lg sm:text-xl md:text-2xl font-semibold">
+      <h1 className="mt-4 text-xl md:text-2xl font-semibold">
         {data.title}
       </h1>
 
-      <p className="text-white mt-3 sm:mt-5 text-sm sm:text-md">
+      <p className="mt-3 text-sm">
         {data.description}
       </p>
 
-      <div className="mt-6">
-        <button className="w-full bg-green-600 text-white py-2 text-sm rounded-md">
-          Completed
-        </button>
-      </div>
-    </div>
+      <button className="btn-success w-full mt-6">
+        Completed ✔
+      </button>
+    </motion.div>
   );
 };
 

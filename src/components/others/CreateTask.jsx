@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { motion } from "framer-motion";
 import { AuthContext } from "../Contexts/AuthProvider";
 
 const CreateTask = () => {
@@ -49,73 +50,101 @@ const CreateTask = () => {
   };
 
   return (
-    <div className="p-4 sm:p-5 bg-[#1c1c1c] mt-5 rounded">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="bg-gradient-to-br from-gray-900 to-black mt-6 rounded-2xl p-6 sm:p-8 shadow-xl"
+    >
+      <h2 className="text-2xl font-bold text-white mb-6">
+        Create New Task 🚀
+      </h2>
+
       <form
         onSubmit={submitHandler}
-        className="flex flex-col lg:flex-row gap-6 w-full"
+        className="flex flex-col lg:flex-row gap-8"
       >
-        {/* Left Section */}
-        <div className="w-full lg:w-1/2">
-          <div>
-            <h3 className="text-sm text-gray-300 mb-1">Task Title</h3>
-            <input
-              value={taskTitle}
-              onChange={(e) => setTaskTitle(e.target.value)}
-              className="text-sm py-2 px-3 w-full rounded outline-none bg-transparent border border-gray-400 mb-4"
-              type="text"
-              placeholder="Make a UI design"
-            />
-          </div>
+        {/* LEFT */}
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.2 }}
+          className="w-full lg:w-1/2 space-y-4"
+        >
+          <Input
+            label="Task Title"
+            value={taskTitle}
+            setValue={setTaskTitle}
+            placeholder="Make a UI design"
+          />
 
-          <div>
-            <h3 className="text-sm text-gray-300 mb-1">Date</h3>
-            <input
-              value={taskDate}
-              onChange={(e) => setTaskDate(e.target.value)}
-              type="date"
-              className="w-full max-w-full text-sm py-1.5 px-2 sm:py-2 sm:px-3 rounded outline-none bg-transparent border border-gray-400 mb-4 box-border"
-            />
-          </div>
+          <Input
+            label="Date"
+            type="date"
+            value={taskDate}
+            setValue={setTaskDate}
+          />
 
-          <div>
-            <h3 className="text-sm text-gray-300 mb-1">Assign to</h3>
-            <input
-              value={assignTo}
-              onChange={(e) => setAssignTo(e.target.value)}
-              className="text-sm py-2 px-3 w-full rounded outline-none bg-transparent border border-gray-400 mb-4"
-              type="text"
-              placeholder="Employee name"
-            />
-          </div>
+          <Input
+            label="Assign To"
+            value={assignTo}
+            setValue={setAssignTo}
+            placeholder="Employee name"
+          />
 
-          <div>
-            <h3 className="text-sm text-gray-300 mb-1">Category</h3>
-            <input
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-              className="text-sm py-2 px-3 w-full rounded outline-none bg-transparent border border-gray-400 mb-4"
-              type="text"
-              placeholder="Design, Dev, etc"
-            />
-          </div>
-        </div>
+          <Input
+            label="Category"
+            value={category}
+            setValue={setCategory}
+            placeholder="Design, Dev, etc"
+          />
+        </motion.div>
 
-        {/* Right Section */}
-        <div className="w-full lg:w-2/5 flex flex-col">
-          <h3 className="text-sm text-gray-300 mb-1">Description</h3>
+        {/* RIGHT */}
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.3 }}
+          className="w-full lg:w-2/5 flex flex-col"
+        >
+          <label className="text-sm text-gray-300 mb-1">
+            Description
+          </label>
+
           <textarea
             value={taskDescription}
             onChange={(e) => setTaskDescription(e.target.value)}
-            className="w-full h-32 sm:h-40 lg:h-44 text-sm py-2 px-4 rounded outline-none bg-transparent border border-gray-400"
-          ></textarea>
+            className="bg-transparent border border-gray-500 rounded-lg p-3 text-sm text-white h-52 focus:border-emerald-500 outline-none"
+            placeholder="Describe the task..."
+          />
 
-          <button className="bg-emerald-500 py-3 hover:bg-emerald-600 rounded text-sm mt-4 w-full transition-colors">
+          <motion.button
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            className="mt-6 bg-emerald-500 hover:bg-emerald-600 transition-colors rounded-lg py-3 text-sm font-semibold text-black"
+          >
             Create Task
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
       </form>
-    </div>
+    </motion.div>
   );
 };
+
+/* 🔹 Reusable Input Component */
+const Input = ({ label, value, setValue, placeholder, type = "text" }) => (
+  <div>
+    <label className="text-sm text-gray-300 mb-1 block">
+      {label}
+    </label>
+    <input
+      type={type}
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      placeholder={placeholder}
+      className="w-full bg-transparent border border-gray-500 rounded-lg py-2 px-3 text-sm text-white focus:border-emerald-500 outline-none"
+    />
+  </div>
+);
 
 export default CreateTask;
