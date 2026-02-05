@@ -32,7 +32,7 @@ const EmployeeSidebar = () => {
     <aside
       className={`${
         isOpen ? "w-64" : "w-16"
-      } bg-black h-screen border-r transition-all duration-300`}
+      } bg-gray-800 border-r transition-all duration-300`}
     >
       {/* Logo / Toggle */}
       <div className="flex items-center px-4 py-4">
@@ -58,7 +58,7 @@ const EmployeeSidebar = () => {
           label="Dashboard"
         />
 
-        {/* Tasks Toggle */}
+        {/* Tasks Toggle
         <button
           onClick={() => setTaskOpen(!taskOpen)}
           className="flex items-center justify-between px-3 py-3 text-sm font-medium text-gray-400 hover:bg-gray-800 rounded-md"
@@ -79,14 +79,14 @@ const EmployeeSidebar = () => {
         </button>
 
         {/* Task Submenu */}
-        {taskOpen && isOpen && (
+        {/* {taskOpen && isOpen && (
           <div className="ml-6 flex flex-col gap-1">
             <SidebarItem to="/tasks/new" label="New Tasks" />
             <SidebarItem to="/tasks/active" label="Active Tasks" />
             <SidebarItem to="/tasks/completed" label="Completed Tasks" />
             <SidebarItem to="/tasks/failed" label="Failed Tasks" />
           </div>
-        )}
+        )} */} 
       </nav>
     </aside>
   );

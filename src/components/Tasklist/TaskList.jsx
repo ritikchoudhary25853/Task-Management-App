@@ -10,7 +10,7 @@ const TaskList = ({ data }) => {
   return (
     <div
       id="tasklist"
-      className="mt-16 h-96 bg-gray-600 overflow-y-auto flex flex-wrap justify-evenly items-center gap-4 p-5 rounded-xl"
+      className="mt-16 min-h-screen bg-gradient-to-br from-black via-gray-900 to-black flex flex-wrap justify-evenly items-center gap-4 p-5 rounded-xl"
     >
       {data.tasks.map((elem, idx) => {
                 if (elem.active) {
