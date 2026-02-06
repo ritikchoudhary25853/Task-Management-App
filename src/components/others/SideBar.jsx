@@ -31,7 +31,7 @@ const Sidebar = () => {
     <aside
       className={`${
         isOpen ? "w-64" : "w-16"
-      } bg-gray-800 h-screen border-r transition-all duration-300`}
+      } bg-gray-800 min-h-screen border-r transition-all duration-300`}
     >
       {/* Logo / Toggle Button */}
       <div className="flex items-center justify-between px-4 py-4">
