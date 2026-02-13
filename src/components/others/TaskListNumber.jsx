@@ -2,11 +2,11 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 24 },
   visible: (i) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.1, duration: 0.4 },
+    transition: { delay: i * 0.08, duration: 0.35, ease: "easeOut" },
   }),
 };
 
@@ -21,8 +21,10 @@ const TaskListNumber = ({ data }) => {
   return (
     <div
       className="
-        mt-10 flex gap-5 overflow-x-auto pb-3
-        sm:grid sm:grid-cols-2 sm:overflow-visible
+        mt-10
+        flex gap-4 overflow-x-auto pb-4 px-1
+        snap-x snap-mandatory
+        sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-visible
         lg:grid-cols-4
       "
     >
@@ -33,21 +35,33 @@ const TaskListNumber = ({ data }) => {
           initial="hidden"
           animate="visible"
           custom={index}
-          whileHover={{ scale: 1.05 }}
+          whileHover={{ scale: 1.04 }}
+          whileTap={{ scale: 0.97 }}
           className="
-            min-w-[230px] sm:min-w-0
-            bg-gradient-to-br
-            text-white
+            snap-center
+            min-w-[220px]
+            sm:min-w-0
             rounded-2xl
-            p-6
+            p-5
+            text-white
             shadow-lg
-            cursor-pointer
+            bg-gradient-to-br
+            transition-transform
           "
-          style={{ backgroundImage: `linear-gradient(135deg, var(--tw-gradient-stops))` }}
         >
-          <div className={`bg-gradient-to-br ${task.color} rounded-xl p-5`}>
-            <h2 className="text-4xl font-bold">{task.count}</h2>
-            <p className="mt-2 text-sm tracking-wide uppercase opacity-90">
+          <div
+            className={`
+              bg-gradient-to-br ${task.color}
+              rounded-xl
+              p-5
+              flex flex-col justify-between
+              h-full
+            `}
+          >
+            <h2 className="text-4xl font-bold leading-none">
+              {task.count}
+            </h2>
+            <p className="mt-2 text-xs font-semibold tracking-widest uppercase opacity-90">
               {task.title}
             </p>
           </div>
