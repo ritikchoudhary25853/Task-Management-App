@@ -45,14 +45,15 @@ const AcceptTask = ({ data }) => {
       </p>
 
       {/* Actions */}
-      <div className="flex flex-col sm:flex-row gap-3 mt-6">
-        <button className="btn-success w-full sm:w-auto">
+      <div className="flex flex-col gap-3 mt-6">
+        <button className="btn-outline w-full">
           Mark as complete
         </button>
-        <button className="btn-danger w-full sm:w-auto">
+
+        <button className="btn-danger w-full">
           Mark as failed
         </button>
-      </div>
+        </div>
     </motion.div>
   );
 };
