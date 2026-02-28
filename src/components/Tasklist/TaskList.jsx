@@ -32,6 +32,7 @@ const TaskList = ({ data }) => {
         sm:flex-row
         sm:flex-wrap
         sm:justify-center
+        sm:items-start
         sm:gap-6
         sm:p-6
       "

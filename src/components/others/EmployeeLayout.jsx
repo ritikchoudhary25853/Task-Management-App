@@ -1,5 +1,5 @@
 import EmployeeSidebar from "./EmployeeSideBar";
-import Navbar from "./Navbar";
+import Navbar from "./NavBar";
 
 const EmployeeLayout = ({ children, changeUser }) => {
   return (
