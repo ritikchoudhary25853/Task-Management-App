@@ -1,61 +1,56 @@
-import React, { useContext, useEffect, useState } from "react";
-import Login from "./components/Auth/Login";
-import { AuthContext } from "./components/Contexts/AuthProvider";
-import MainLayout from "./components/Layout/MainLayout";
+import { Navigate, Route, Routes } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
+import AppLayout from "./components/Layout/AppLayout";
+import { useWorkTrack } from "./context/WorkTrackContext";
+import { ForgotPasswordPage, LoginPage, SignupPage } from "./pages/AuthPages";
+import { AdminDashboard, EmployeeDashboard } from "./pages/DashboardPages";
+import EmployeesPage from "./pages/EmployeesPage";
+import TasksPage from "./pages/TasksPage";
+import { CalendarPage, ProfilePage, SettingsPage } from "./pages/UtilityPages";
 
-const App = () => {
-  const [user, setUser] = useState(null);
-  const [loggedInUserData, setLoggedInUserData] = useState(null);
-  const [userData] = useContext(AuthContext);
+function HomeRedirect() {
+  const { currentUser } = useWorkTrack();
+  if (!currentUser) return <Navigate to="/login" replace />;
+  return <Navigate to={currentUser.role === "Admin" ? "/admin/dashboard" : "/employee/dashboard"} replace />;
+}
 
-  useEffect(() => {
-    const saved = localStorage.getItem("loggedInUser");
-    if (!saved) return;
+function ProtectedRoute({ role }) {
+  const { currentUser } = useWorkTrack();
+  if (!currentUser) return <Navigate to="/login" replace />;
+  if (role && currentUser.role !== role) return <Navigate to="/" replace />;
+  return <AppLayout />;
+}
 
-    const data = JSON.parse(saved);
-    setUser(data.role);
-    setLoggedInUserData(data.data || null);
-  }, []);
-
-  const handleLogin = (email, password) => {
-    if (email === "admin@me.com" && password === "123") {
-      setUser("admin");
-      localStorage.setItem("loggedInUser", JSON.stringify({ role: "admin" }));
-      return;
-    }
-
-    if (userData) {
-      const employee = userData.find(
-        (e) => e.email === email && e.password === password
-      );
-
-      if (employee) {
-        setUser("employee");
-        setLoggedInUserData(employee);
-        localStorage.setItem(
-          "loggedInUser",
-          JSON.stringify({ role: "employee", data: employee })
-        );
-        return;
-      }
-    }
-
-    alert("Invalid Credentials");
-  };
-
+export default function App() {
   return (
     <>
-      {!user && <Login handleLogin={handleLogin} />}
+      <Routes>
+        <Route path="/" element={<HomeRedirect />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
 
-      {user && (
-        <MainLayout
-          role={user}
-          userData={loggedInUserData}
-          changeUser={setUser}
-        />
-      )}
+        <Route element={<ProtectedRoute role="Admin" />}>
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/employees" element={<EmployeesPage />} />
+          <Route path="/admin/tasks" element={<TasksPage mode="admin" />} />
+          <Route path="/admin/calendar" element={<CalendarPage mode="admin" />} />
+        </Route>
+
+        <Route element={<ProtectedRoute role="Employee" />}>
+          <Route path="/employee/dashboard" element={<EmployeeDashboard />} />
+          <Route path="/employee/tasks" element={<TasksPage mode="employee" />} />
+          <Route path="/employee/calendar" element={<CalendarPage mode="employee" />} />
+        </Route>
+
+        <Route element={<ProtectedRoute />}>
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/settings" element={<SettingsPage />} />
+        </Route>
+
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+      <Toaster position="top-right" toastOptions={{ duration: 2600 }} />
     </>
   );
-};
-
-export default App;
+}
