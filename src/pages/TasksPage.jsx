@@ -66,7 +66,7 @@ function TaskForm({ initial, onSave, onCancel }) {
               setAttachmentName("");
             }}
           >
-            <Paperclip size={16} />
+            <Paperclip size={20} />
             Add
           </Button>
         </div>
@@ -75,7 +75,7 @@ function TaskForm({ initial, onSave, onCancel }) {
             <Badge key={item} className="bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200">
               {item}
               <button type="button" className="ml-2" onClick={() => setForm({ ...form, attachments: form.attachments.filter((file) => file !== item) })}>
-                <X size={12} />
+                <X size={20} />
               </button>
             </Badge>
           ))}
@@ -141,8 +141,8 @@ function TaskCard({ task, assignee, canAdmin, canEmployee, onEdit, onDelete }) {
         </div>
         {canAdmin && (
           <div className="flex gap-2">
-            <Button variant="secondary" className="h-9 w-9 px-0" onClick={() => onEdit(task)} aria-label="Edit task"><Edit3 size={16} /></Button>
-            <Button variant="danger" className="h-9 w-9 px-0" onClick={() => onDelete(task)} aria-label="Delete task"><Trash2 size={16} /></Button>
+            <Button variant="secondary" className="h-10 w-10 px-0" onClick={() => onEdit(task)} aria-label="Edit task"><Edit3 size={22} /></Button>
+            <Button variant="danger" className="h-10 w-10 px-0" onClick={() => onDelete(task)} aria-label="Delete task"><Trash2 size={22} /></Button>
           </div>
         )}
       </div>
@@ -180,22 +180,22 @@ function TaskCard({ task, assignee, canAdmin, canEmployee, onEdit, onDelete }) {
 
       {task.attachments?.length > 0 && (
         <div className="mt-4 flex flex-wrap gap-2">
-          {task.attachments.map((file) => <Badge key={file} className="bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200"><FileText size={12} /> {file}</Badge>)}
+          {task.attachments.map((file) => <Badge key={file} className="bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200"><FileText size={20} /> {file}</Badge>)}
         </div>
       )}
 
       {canEmployee && (
         <div className="mt-5 flex flex-wrap gap-2">
           <Button variant="success" disabled={task.status !== "Pending"} onClick={() => { updateTaskStatus(task.id, "Accepted"); toast.success("Task accepted."); }}>
-            <ThumbsUp size={16} />
+            <ThumbsUp size={20} />
             Accept
           </Button>
           <Button variant="secondary" disabled={task.status !== "Pending"} onClick={() => { updateTaskStatus(task.id, "Rejected"); toast.success("Task rejected."); }}>
-            <ThumbsDown size={16} />
+            <ThumbsDown size={20} />
             Reject
           </Button>
           <Button variant="primary" disabled={!["Accepted", "In Progress"].includes(task.status)} onClick={() => updateTaskStatus(task.id, "In Progress")}>
-            <Check size={16} />
+            <Check size={20} />
             In Progress
           </Button>
           <Button variant="success" disabled={["Completed", "Failed", "Rejected"].includes(task.status)} onClick={() => setCompletionAction("Completed")}>
@@ -264,7 +264,7 @@ export default function TasksPage({ mode = "admin" }) {
         </div>
         {isAdmin && (
           <Button onClick={() => setEditing(blankTask)}>
-            <Plus size={18} />
+            <Plus size={22} />
             Create task
           </Button>
         )}
@@ -273,8 +273,8 @@ export default function TasksPage({ mode = "admin" }) {
       <section className="rounded-lg border border-slate-200 bg-white p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
         <div className="grid gap-3 lg:grid-cols-[1fr_170px_170px]">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-            <input className={`${inputClass} pl-10`} placeholder="Search tasks, categories, assignees" value={search} onChange={(e) => setSearch(e.target.value)} />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={22} />
+            <input className={`${inputClass} pl-11`} placeholder="Search tasks, categories, assignees" value={search} onChange={(e) => setSearch(e.target.value)} />
           </div>
           <select className={inputClass} value={status} onChange={(e) => setStatus(e.target.value)}>
             <option>All</option>

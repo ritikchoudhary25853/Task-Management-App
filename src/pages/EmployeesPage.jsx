@@ -104,7 +104,7 @@ export default function EmployeesPage() {
           <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Add admins, manage employees, and keep profile details current.</p>
         </div>
         <Button onClick={() => setEditing(blankUser)}>
-          <Plus size={18} />
+          <Plus size={22} />
           Add user
         </Button>
       </section>
@@ -112,8 +112,8 @@ export default function EmployeesPage() {
       <section className="rounded-lg border border-slate-200 bg-white p-4 shadow-soft dark:border-slate-800 dark:bg-slate-900">
         <div className="grid gap-3 lg:grid-cols-[1fr_160px_160px]">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-            <input className={`${inputClass} pl-10`} placeholder="Search by name, email, department, phone" value={search} onChange={(e) => { setSearch(e.target.value); setPage(1); }} />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={22} />
+            <input className={`${inputClass} pl-11`} placeholder="Search by name, email, department, phone" value={search} onChange={(e) => { setSearch(e.target.value); setPage(1); }} />
           </div>
           <select className={inputClass} value={role} onChange={(e) => { setRole(e.target.value); setPage(1); }}>
             <option>All</option>
@@ -164,8 +164,8 @@ export default function EmployeesPage() {
                       </td>
                       <td className="px-3 py-4">
                         <div className="flex justify-end gap-2">
-                          <Button variant="secondary" className="h-9 w-9 px-0" onClick={() => setEditing(user)} aria-label="Edit user"><Edit3 size={16} /></Button>
-                          <Button variant="danger" className="h-9 w-9 px-0" onClick={() => setConfirm(user)} aria-label="Delete user"><Trash2 size={16} /></Button>
+                          <Button variant="secondary" className="h-10 w-10 px-0" onClick={() => setEditing(user)} aria-label="Edit user"><Edit3 size={22} /></Button>
+                          <Button variant="danger" className="h-10 w-10 px-0" onClick={() => setConfirm(user)} aria-label="Delete user"><Trash2 size={22} /></Button>
                         </div>
                       </td>
                     </tr>

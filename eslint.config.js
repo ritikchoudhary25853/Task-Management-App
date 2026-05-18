@@ -7,14 +7,6 @@ import { defineConfig, globalIgnores } from 'eslint/config'
 export default defineConfig([
   globalIgnores([
     'dist',
-    'src/components/Auth/**',
-    'src/components/Contexts/**',
-    'src/components/DashBoard/**',
-    'src/components/Layout/MainLayout.jsx',
-    'src/components/Routes/**',
-    'src/components/Tasklist/**',
-    'src/components/animations/**',
-    'src/components/others/**',
   ]),
   {
     files: ['**/*.{js,jsx}'],

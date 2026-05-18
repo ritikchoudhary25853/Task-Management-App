@@ -185,7 +185,7 @@ export function EmployeeDashboard() {
                     </div>
                   </div>
                   <div className="mt-3 flex items-center gap-2 text-sm text-slate-500">
-                    <CalendarClock size={16} />
+                    <CalendarClock size={20} />
                     Due {formatDate(task.dueDate)} ({daysUntil(task.dueDate) < 0 ? "overdue" : `${daysUntil(task.dueDate)} days left`})
                   </div>
                   <div className="mt-3 h-2 rounded-full bg-slate-200 dark:bg-slate-800">

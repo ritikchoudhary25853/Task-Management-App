@@ -46,7 +46,7 @@ function PasswordField({ label, value, onChange, error }) {
       <div className="relative">
         <input className={`${inputClass} pr-11`} type={show ? "text" : "password"} value={value} onChange={onChange} placeholder="Enter password" />
         <button type="button" className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400" onClick={() => setShow((value) => !value)} aria-label="Toggle password">
-          {show ? <EyeOff size={18} /> : <Eye size={18} />}
+          {show ? <EyeOff size={22} /> : <Eye size={22} />}
         </button>
       </div>
     </Field>
@@ -92,8 +92,8 @@ export function LoginPage() {
         </Field>
         <Field label="Email" error={errors.email}>
           <div className="relative">
-            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-            <input className={`${inputClass} pl-10`} value={form.email} onChange={(event) => setForm({ ...form, email: event.target.value })} />
+            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={22} />
+            <input className={`${inputClass} pl-11`} value={form.email} onChange={(event) => setForm({ ...form, email: event.target.value })} />
           </div>
         </Field>
         <PasswordField label="Password" value={form.password} onChange={(event) => setForm({ ...form, password: event.target.value })} error={errors.password} />
@@ -102,7 +102,7 @@ export function LoginPage() {
           <Link className="font-semibold text-slate-700 hover:underline dark:text-slate-200" to="/signup">Create account</Link>
         </div>
         <Button type="submit" className="w-full">
-          <Lock size={18} />
+          <Lock size={22} />
           Sign in
         </Button>
       </form>
@@ -157,7 +157,7 @@ export function SignupPage() {
           <input className={inputClass} value={form.phone} onChange={(event) => setForm({ ...form, phone: event.target.value })} />
         </Field>
         <Button type="submit" className="w-full">
-          <UserPlus size={18} />
+          <UserPlus size={22} />
           Register
         </Button>
         <p className="text-center text-sm text-slate-500">Already registered? <Link className="font-semibold text-slate-800 dark:text-white" to="/login">Sign in</Link></p>

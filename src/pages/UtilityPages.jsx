@@ -23,7 +23,7 @@ export function CalendarPage({ mode = "admin" }) {
       <section className="rounded-lg bg-white p-5 shadow-soft dark:bg-slate-900">
         <div className="flex items-center gap-3">
           <div className="grid h-11 w-11 place-items-center rounded-lg bg-sky-100 text-sky-700 dark:bg-sky-500/15 dark:text-sky-300">
-            <CalendarDays size={22} />
+            <CalendarDays size={26} />
           </div>
           <div>
             <h2 className="text-2xl font-black">Calendar view</h2>
@@ -82,10 +82,10 @@ export function ProfilePage() {
         <h2 className="mt-4 text-2xl font-black">{currentUser.name}</h2>
         <p className="text-sm text-slate-500 dark:text-slate-400">{currentUser.title}</p>
         <div className="mt-5 space-y-3 text-sm">
-          <p className="flex items-center gap-2"><Mail size={16} /> {currentUser.email}</p>
-          <p className="flex items-center gap-2"><Phone size={16} /> {currentUser.phone}</p>
-          <p className="flex items-center gap-2"><Shield size={16} /> {currentUser.role}</p>
-          <p className="flex items-center gap-2"><User size={16} /> {currentUser.department}</p>
+          <p className="flex items-center gap-2"><Mail size={20} /> {currentUser.email}</p>
+          <p className="flex items-center gap-2"><Phone size={20} /> {currentUser.phone}</p>
+          <p className="flex items-center gap-2"><Shield size={20} /> {currentUser.role}</p>
+          <p className="flex items-center gap-2"><User size={20} /> {currentUser.department}</p>
         </div>
         <div className="mt-6 grid grid-cols-3 gap-3">
           <div className="rounded-lg bg-slate-50 p-3 text-center dark:bg-slate-950"><p className="text-xl font-black">{myTasks.length}</p><p className="text-xs text-slate-500">Tasks</p></div>
@@ -109,7 +109,7 @@ export function ProfilePage() {
             toast.success("Profile saved.");
           }}
         >
-          <Save size={18} />
+          <Save size={22} />
           Save profile
         </Button>
       </section>

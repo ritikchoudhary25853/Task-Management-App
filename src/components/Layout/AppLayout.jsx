@@ -65,8 +65,8 @@ export default function AppLayout() {
             <p className="text-xl font-black tracking-tight">WorkTrack</p>
             <p className="text-xs font-medium text-slate-500 dark:text-slate-400">Company task command</p>
           </div>
-          <Button variant="ghost" className="h-9 w-9 px-0 lg:hidden" onClick={() => setOpen(false)}>
-            <X size={18} />
+          <Button variant="ghost" className="h-10 w-10 px-0 lg:hidden" onClick={() => setOpen(false)}>
+            <X size={22} />
           </Button>
         </div>
 
@@ -94,7 +94,7 @@ export default function AppLayout() {
                 }`
               }
             >
-              {createElement(item.icon, { size: 18 })}
+              {createElement(item.icon, { size: 22 })}
               {item.label}
             </NavLink>
           ))}
@@ -102,7 +102,7 @@ export default function AppLayout() {
 
         <div className="absolute bottom-4 left-3 right-3">
           <Button variant="ghost" className="w-full justify-start" onClick={logout}>
-            <LogOut size={18} />
+            <LogOut size={22} />
             Logout
           </Button>
         </div>
@@ -113,8 +113,8 @@ export default function AppLayout() {
       <div className="lg:pl-72">
         <header className="sticky top-0 z-20 flex h-16 items-center justify-between border-b border-slate-200 bg-white/90 px-4 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90 sm:px-6">
           <div className="flex items-center gap-3">
-            <Button variant="ghost" className="h-10 w-10 px-0 lg:hidden" onClick={() => setOpen(true)}>
-              <Menu size={20} />
+            <Button variant="ghost" className="h-11 w-11 px-0 lg:hidden" onClick={() => setOpen(true)}>
+              <Menu size={24} />
             </Button>
             <div>
               <h1 className="text-lg font-bold sm:text-xl">{pageTitle}</h1>
@@ -125,16 +125,16 @@ export default function AppLayout() {
           <div className="flex items-center gap-2">
             <Button
               variant="secondary"
-              className="h-10 w-10 px-0"
+              className="h-11 w-11 px-0"
               onClick={() => setTheme(settings.theme === "dark" ? "light" : "dark")}
               aria-label="Toggle theme"
             >
-              {settings.theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+              {settings.theme === "dark" ? <Sun size={22} /> : <Moon size={22} />}
             </Button>
             <div className="relative">
-              <Button variant="secondary" className="h-10 w-10 px-0" onClick={() => setNotesOpen((value) => !value)} aria-label="Notifications">
-                <Bell size={18} />
-                {unread > 0 && <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-rose-600 px-1 text-[10px] text-white">{unread}</span>}
+              <Button variant="secondary" className="h-11 w-11 px-0" onClick={() => setNotesOpen((value) => !value)} aria-label="Notifications">
+                <Bell size={24} />
+                {unread > 0 && <span className="absolute -right-1 -top-1 grid h-6 min-w-6 place-items-center rounded-full bg-rose-600 px-1 text-xs text-white">{unread}</span>}
               </Button>
               {notesOpen && (
                 <div className="absolute right-0 mt-2 w-80 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-xl dark:border-slate-800 dark:bg-slate-950">

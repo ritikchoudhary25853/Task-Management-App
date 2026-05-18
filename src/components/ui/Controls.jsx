@@ -58,7 +58,7 @@ export const StatCard = ({ icon: Icon, label, value, note, tone = "slate" }) => 
           <p className="mt-2 text-3xl font-bold text-slate-950 dark:text-white">{value}</p>
           {note && <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">{note}</p>}
         </div>
-        <div className={`rounded-lg p-3 ${tones[tone]}`}>{Icon && <Icon size={20} />}</div>
+        <div className={`rounded-lg p-3 ${tones[tone]}`}>{Icon && <Icon size={26} />}</div>
       </div>
     </Motion.div>
   );
@@ -81,8 +81,8 @@ export const Modal = ({ title, children, onClose, size = "max-w-2xl" }) => (
     >
       <div className="sticky top-0 z-10 flex items-center justify-between border-b border-slate-200 bg-white px-5 py-4 dark:border-slate-800 dark:bg-slate-950">
         <h2 className="text-lg font-bold text-slate-950 dark:text-white">{title}</h2>
-        <Button variant="ghost" className="h-9 w-9 px-0" onClick={onClose} aria-label="Close modal">
-          <X size={18} />
+        <Button variant="ghost" className="h-10 w-10 px-0" onClick={onClose} aria-label="Close modal">
+          <X size={22} />
         </Button>
       </div>
       <div className="p-5">{children}</div>
@@ -93,8 +93,8 @@ export const Modal = ({ title, children, onClose, size = "max-w-2xl" }) => (
 export const ConfirmModal = ({ title, message, onCancel, onConfirm }) => (
   <Modal title={title} onClose={onCancel} size="max-w-md">
     <div className="flex gap-3">
-      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-rose-100 text-rose-600 dark:bg-rose-500/15">
-        <AlertTriangle size={22} />
+      <div className="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-rose-100 text-rose-600 dark:bg-rose-500/15">
+        <AlertTriangle size={28} />
       </div>
       <p className="text-sm leading-6 text-slate-600 dark:text-slate-300">{message}</p>
     </div>
